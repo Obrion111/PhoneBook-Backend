@@ -4,13 +4,16 @@ const express = require('express')
 const app = express()
 var morgan = require('morgan')
 const cors = require('cors')
+const path = require('path')
 
 const persons = require('./persons')
 const size = persons.length
 const today = new Date()
 
-app.use(cors())
 
+
+app.use(cors())
+app.use(express.static('dist'))
 app.use(express.json())
 
 morgan.token('body', (req) => {
